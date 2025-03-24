@@ -8,3 +8,6 @@ function greeting(callback) {
 greeting(function() {
 console.log("Are you ready today?")
 })
+
+
+

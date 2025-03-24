@@ -1,16 +1,16 @@
 //Function declaration
 
-// function showHelloWorld() {
-//     console.log("Hello World!")
-// }
-// showHelloWorld();
+function showHelloWorld() {
+    console.log("Hello World!")
+}
+showHelloWorld();
 
 //Fuction expression
 
-// const showHelloWorld = function () {
-//     console.log("Hello World");
-// }
-// showHelloWorld()
+const showHelloWorld = function () {
+    console.log("Hello World");
+}
+showHelloWorld()
 
 //Arrow function
 
