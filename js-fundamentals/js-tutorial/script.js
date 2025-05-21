@@ -35,12 +35,22 @@
 // let p = document.querySelector("p");
 // console.log(p);
 
-let text = document.querySelector("p");
-text.addEventListener("mouseenter", function () {
-  text.textContent = "Hello Friends!";
-});
+// let text = document.querySelector("p");
+// text.addEventListener("mouseenter", function () {
+//   text.textContent = "Hello Friends!";
+// });
 
-text.addEventListener("mouseleave", function () {
-  text.textContent = "Hello World!";
-});
+// text.addEventListener("mouseleave", function () {
+//   text.textContent = "Hello World!";
+// });
 
+//Date
+
+let startDate = new Date();
+
+for (let i = 0; i < 100000000; i++) {
+  let number = i ** 3;
+}
+
+let endDate = new Date();
+console.log(`Loop worked ${endDate - startDate} milliseconds`);
