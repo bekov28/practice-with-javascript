@@ -38,25 +38,25 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   //Loader
-  const loaderWrapper = document.querySelector(".loader-wrapper");
+
+  const loadedWrapper = document.querySelector(".loader-wrapper");
 
   setTimeout(() => {
-    loaderWrapper.style.display = "none";
+    loadedWrapper.style.display = "none";
   }, 500);
 
   //Timer
-
-  const deadline = "2025-05-01";
+  const deadline = "2025-12-31";
 
   function getTimeRemaining(endtime) {
     let days, hours, minutes, seconds;
+    const time = Date.parse(endtime) - Date.parse(new Date()); //Converts the deadline string (e.g., '2025-12-31') to a timestamp (milliseconds since Jan 1, 1970).
 
-    const time = Date.parse(endtime) - Date.parse(new Date());
-    if (time < 0) {
+    if (time <= 0) {
       days = 0;
       hours = 0;
       minutes = 0;
-      seconds = 0;
+      seconds;
     } else {
       (days = Math.floor(time / (1000 * 60 * 60 * 24))),
         (hours = Math.floor((time / (1000 * 60 * 60)) % 24)),
@@ -89,13 +89,15 @@ window.addEventListener("DOMContentLoaded", () => {
       seconds = timer.querySelector("#seconds"),
       timeInterval = setInterval(updateClock, 1000);
 
+    updateClock();
+
     function updateClock() {
       const time = getTimeRemaining(endtime);
 
-      days.textContent = formatNumber(time.days);
-      hours.textContent = formatNumber(time.hours);
-      minutes.textContent = formatNumber(time.minutes);
-      seconds.textContent = formatNumber(time.seconds);
+      days.innerHTML = formatNumber(time.days);
+      hours.innerHTML = formatNumber(time.hours);
+      minutes.innerHTML = formatNumber(time.minutes);
+      seconds.innerHTML = formatNumber(time.seconds);
 
       if (time.totalTime <= 0) {
         clearInterval(timeInterval);
@@ -103,23 +105,4 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
   setClock(".timer", deadline);
-
-  //Modal
-  const modalOpenBtn = document.querySelectorAll("[data-modal]"),
-    modal = document.querySelector(".modal"),
-    modalCloseBtn = document.querySelector("[data-modal-close]");
-
-  modalOpenBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      modal.classList.add("show", "fade");
-      modal.classList.remove("hide");
-      document.body.style.overflow = "hidden";
-    });
-  });
-
-  modalCloseBtn.addEventListener("click", () => {
-    modal.classList.add("hide");
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
-  });
 });
